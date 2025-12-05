@@ -7,6 +7,7 @@ Included files
 - about.html — Company story, founder, mission
 - services.html — Detailed services and example packages
 - contact.html — Contact form (Formspree placeholder)
+- careers.html - jobs
 - styles.css — Central stylesheet
 - script.js — Small UI helpers (mobile menu, form status)
 - assets/logo.svg — Simple SVG logo placeholder
