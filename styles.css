@@ -1,26 +1,30 @@
 /* ======================================
-    Global Styles & Variables (Editorial Data Flow)
+    Global Styles & Variables (Consulting Authority)
 ====================================== */
 :root {
-    /* Color Palette: High Contrast, Editorial */
-    --color-primary-brand: #7952b3;     /* Deep Violet for Authority */
-    --color-secondary-focus: #198754;   /* Dark Green for Compliance/Success */
+    /* Color Palette: Trust, Authority, Precision */
+    --color-authority-primary: #003366;    /* Deep Navy Blue */
+    --color-authority-secondary: #0099a1;  /* Rich Teal/Cyan for Precision */
+    --color-authority-accent: #f5a623;     /* Subtle Gold/Amber for Alerts */
     
-    --color-background-light: #f8f9fa;  /* Off-White, paper-like background */
-    --color-background-dark: #212529;   /* Near-Black for contrast blocks */
-    --color-background-accent: #dee2e6; /* Light grey for subtle separation */
+    --color-background-white: #ffffff;
+    --color-background-light: #f7f9fb;     /* Very Light Off-White Base */
+    --color-background-muted: #e6e8eb;     /* Light Grey for subtle dividers */
 
-    --color-text-dark: #343a40;
-    --color-text-light: #f8f9fa;
+    --color-text-dark: #212529;
+    --color-text-body: #495057;
 
     /* Typography */
-    --font-family-headline: 'Georgia', serif; /* Serif for high-end editorial feel */
-    --font-family-body: 'Helvetica Neue', sans-serif; 
+    --font-family-headline: 'Roboto', 'Arial', sans-serif;
+    --font-family-body: 'Open Sans', 'Helvetica Neue', sans-serif; 
 
     /* Spacing & Components */
-    --padding-section: 120px 0; /* Large vertical padding */
-    --max-content-width: 1100px;
-    --border-radius-sharp: 0;
+    --spacing-xl: 100px;
+    --spacing-lg: 60px;
+    --max-content-width: 1280px;
+    --border-radius-minimal: 4px;
+    /* Precise, low-spread shadow for "floating paper" look */
+    --shadow-precise: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -32,221 +36,225 @@
 body {
     font-family: var(--font-family-body);
     background: var(--color-background-light);
-    color: var(--color-text-dark);
+    color: var(--color-text-body);
     line-height: 1.6;
 }
 
 h1, h2, h3 {
     font-family: var(--font-family-headline);
     color: var(--color-text-dark);
+    font-weight: 700;
 }
 
 a {
-    color: var(--color-primary-brand);
+    color: var(--color-authority-primary);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 /* ======================================
-    Header (Simple Bar, Scrolling)
+    Header (Stark, Structured, Fixed)
 ====================================== */
 header {
-    background: var(--color-background-light);
-    border-bottom: 2px solid var(--color-background-accent);
-    padding: 20px 50px;
+    background: var(--color-background-white);
+    border-bottom: 1px solid var(--color-background-muted);
+    padding: 15px 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    
-    /* Removed sticky/fixed position */
+    /* Aligns logo and nav to the left, tightly clustered */
+    justify-content: flex-start;
+    gap: 40px;
+    position: sticky;
+    top: 0;
     z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very subtle top-bar shadow */
 }
 
 header .logo {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--color-primary-brand);
-    /* Unique: Small title with a large weight */
-    font-family: var(--font-family-headline);
-    letter-spacing: -1px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-authority-primary);
 }
 
 header nav a {
     color: var(--color-text-dark);
     margin-left: 30px;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 header nav a:hover {
-    color: var(--color-secondary-focus);
+    color: var(--color-authority-secondary);
+    border-bottom: 2px solid var(--color-authority-secondary);
+    padding-bottom: 12px; /* Visual cue for high-end navigation */
 }
 
 /* ======================================
-    Hero Section (Bold Typography)
+    Hero Section (Clean & Data-Focused)
 ====================================== */
 .hero {
-    min-height: 80vh;
-    padding: 150px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    background: var(--color-background-light);
+    min-height: 50vh;
+    padding: var(--spacing-xl) 0;
+    background: var(--color-authority-primary); /* Use primary color for depth */
+    color: white;
+    text-align: center;
 }
 
 .hero-content {
-    max-width: var(--max-content-width);
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 40px;
 }
 
 .hero h1 {
-    font-size: 5rem; /* Massive headline */
+    font-size: 3.5rem;
     font-weight: 700;
-    line-height: 1;
-    margin-bottom: 30px;
-    color: var(--color-primary-brand);
+    color: white;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
 }
 
 .hero p {
-    font-size: 1.5rem;
-    max-width: 700px;
-    margin-bottom: 40px;
-    color: var(--color-text-dark);
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 30px;
 }
 
 /* ======================================
-    Buttons (High Contrast)
+    Buttons (Corporate & Solid)
 ====================================== */
 .btn {
-    padding: 15px 35px;
-    background: var(--color-secondary-focus);
+    padding: 12px 28px;
+    background: var(--color-authority-secondary);
     color: white;
-    border-radius: var(--border-radius-sharp);
+    border-radius: var(--border-radius-minimal);
     font-weight: 700;
-    transition: all 0.3s ease;
-    border: none;
     text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
 }
 
 .btn:hover {
-    background: #146c43;
-    transform: translateY(-2px);
+    background: #007a82;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--color-background-white);
+    color: var(--color-authority-primary);
+    border: 1px solid var(--color-authority-primary);
+    box-shadow: none;
+}
+.btn-secondary:hover {
+    background: var(--color-background-light);
+    transform: none;
 }
 
 /* ======================================
-    Sections (Asymmetric and Color Blocked)
+    Sections (Standardized Content Blocks)
 ====================================== */
 section {
-    padding: var(--padding-section);
-    position: relative;
-    overflow: hidden;
+    padding: var(--spacing-lg) 0;
+}
+
+.section-content {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
 section h2 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 60px;
-    line-height: 1.1;
-}
-
-/* --- Dark Block Section (e.g., Fraud Investigation) --- */
-.section-dark {
-    background: var(--color-background-dark);
-    color: var(--color-text-light);
-}
-
-.section-dark h2, .section-dark p {
-    color: var(--color-text-light);
-}
-
-/* --- Asymmetric Grid Layout for features --- */
-.asymmetric-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr; /* Two-thirds for content, one-third for accent/image */
-    gap: 80px;
-    max-width: var(--max-content-width);
-    margin: 0 auto;
-    padding: 0 50px;
-}
-
-.asymmetric-grid-reverse {
-    grid-template-columns: 1fr 2fr;
-}
-
-.data-module {
-    /* Main Content Area */
-    padding-right: 20px;
-}
-
-.visual-accent {
-    /* Image/Stat/Accent Area */
-    background: var(--color-background-accent);
-    padding: 30px;
+    font-size: 2.5rem;
     text-align: center;
-    font-family: var(--font-family-headline);
-    font-size: 1.8rem;
-    color: var(--color-text-dark);
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
 }
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-authority-secondary);
+    margin: 10px auto 0;
+}
+
 
 /* ======================================
-    Service Cards (Modular Blocks)
+    Service Cards (Elevated Data Modules)
 ====================================== */
 .service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    max-width: var(--max-content-width);
-    margin: 60px auto 0;
-    padding: 0 50px;
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .service-card {
-    background: var(--color-main-surface);
+    background: var(--color-background-white);
     padding: 30px;
-    border-top: 5px solid var(--color-primary-brand);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    border-radius: var(--border-radius-minimal);
+    box-shadow: var(--shadow-precise);
+    border-top: 5px solid var(--color-authority-primary);
+    transition: border-top-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .service-card:hover {
-    border-top-color: var(--color-secondary-focus);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-top-color: var(--color-authority-secondary);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* More pronounced lift on hover */
+    transform: translateY(-3px);
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-authority-primary);
+    text-transform: uppercase;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--color-authority-secondary);
     margin-bottom: 15px;
+    display: block;
 }
 
 /* ======================================
-    Footer 
+    Footer (Strong and Trustworthy)
 ====================================== */
 footer {
-    background: var(--color-background-dark);
-    color: var(--color-text-light);
+    background: var(--color-authority-primary);
+    color: white;
     text-align: center;
-    padding: 40px 50px;
+    padding: 30px 40px;
     font-size: 0.9rem;
+    margin-top: 40px;
 }
 
 /* ======================================
     Responsive Adjustments
 ====================================== */
 @media (max-width: 900px) {
-    .hero h1 {
-        font-size: 3.5rem;
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
-    section h2 {
+    header nav {
+        text-align: center;
+    }
+    header nav a {
+        margin: 0 10px;
+        padding-bottom: 5px;
+        display: inline-block;
+    }
+    .hero h1 {
         font-size: 2.5rem;
     }
-    .asymmetric-grid, .asymmetric-grid-reverse {
+    .service-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    .visual-accent {
-        order: -1; /* Image/Accent appears above text on mobile */
     }
 }
