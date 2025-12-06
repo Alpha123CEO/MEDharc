@@ -1,28 +1,27 @@
 /* ======================================
-    Global Styles & Variables (Deep Spectrum)
+    Global Styles & Variables (Modular Dashboard)
 ====================================== */
 :root {
-    /* Color Palette: Deep Base with Vibrant Accents */
-    --color-system-base: #0a0f18;       /* Deepest Dark Blue / Near-Black */
-    --color-system-primary: #5e35b1;     /* Rich Violet for main brand color */
-    --color-system-focus: #fdd835;       /* Electric Gold/Yellow for critical actions */
-    --color-system-secondary: #00bcd4;   /* Bright Cyan for data highlights */
-
-    /* Glass Surface Colors (Less transparent, more solid look) */
-    --color-glass-surface: rgba(40, 48, 64, 0.7); /* Dark, smoky glass background */
-    --color-glass-border: rgba(255, 255, 255, 0.1);  /* Very subtle rim light */
+    /* Color Palette: High Contrast for Functionality */
+    --color-sidebar-dark: #1e293b;      /* Deep Slate Blue for fixed navigation */
+    --color-sidebar-text: #e2e8f0;      /* Light text for sidebar contrast */
+    --color-sidebar-active: #3b82f6;    /* Bright Blue for active/focus states */
     
-    --color-text-header: #ffffff;
-    --color-text-detail: #b0bec5; /* Light grey text for better readability on dark */
+    --color-main-light: #f1f5f9;        /* Off-white/Light Gray background for content */
+    --color-main-surface: #ffffff;      /* Pure white for dashboard cards/modules */
+    
+    --color-text-primary: #0f172a;      /* Dark text for content contrast */
+    --color-text-secondary: #64748b;    /* Muted text for descriptions */
 
     /* Typography */
-    --font-family-base: 'Poppins', sans-serif;
+    --font-family-base: 'Inter', sans-serif;
 
     /* Components & Effects */
-    --border-radius-data-tile: 16px; /* Slightly sharper corners */
-    --shadow-inner-light: inset 0 0 10px rgba(255, 255, 255, 0.05); /* Very subtle inner shine */
-    --shadow-depth: 0 8px 20px 0 rgba(0, 0, 0, 0.8);              /* Strong, dark shadow for lift */
-    --shadow-glow: 0 0 25px rgba(253, 216, 53, 0.7);               /* Electric glow from focus color */
+    --spacing-lg: 32px;
+    --spacing-md: 16px;
+    --sidebar-width: 250px;
+    --border-radius-module: 8px;
+    --shadow-module-light: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -33,241 +32,200 @@
 
 body {
     font-family: var(--font-family-base);
-    /* 💥 THE DEEPEST BACKGROUND */
-    background: var(--color-system-base);
-    color: var(--color-text-detail);
-    line-height: 1.6;
+    background: var(--color-main-light);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
     min-height: 100vh;
+    display: flex; /* Enable Flexbox for the Sidebar/Content split */
 }
 
 h1, h2, h3 {
-    color: var(--color-text-header);
+    color: var(--color-text-primary);
     font-weight: 700;
 }
 
 a {
-    color: var(--color-system-focus);
+    color: var(--color-sidebar-active);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.2s ease;
 }
 
 /* ======================================
-    Glass Component Mixin (The reusable 3D style)
+    1. Sidebar (Fixed Vertical Navigation)
 ====================================== */
-.glass-module {
-    background: var(--color-glass-surface);
-    border-radius: var(--border-radius-data-tile);
-    box-shadow: var(--shadow-depth), var(--shadow-inner-light);
-    border: 1px solid var(--color-glass-border);
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--color-sidebar-dark);
+    color: var(--color-sidebar-text);
+    padding: var(--spacing-lg) 0;
+    position: fixed; /* Fixed position is crucial for the dashboard feel */
+    height: 100%;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
 
-    /* Slightly less blur to emphasize the dark background */
-    backdrop-filter: blur(8px) saturate(150%);
-    -webkit-backdrop-filter: blur(8px) saturate(150%);
-    
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+.sidebar .logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: 0 var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    color: white;
+}
+
+.sidebar nav {
+    padding: 0;
+}
+
+.sidebar nav a {
+    display: block;
+    color: var(--color-sidebar-text);
+    padding: 12px var(--spacing-lg);
+    font-weight: 500;
+    border-left: 4px solid transparent;
+    transition: background 0.3s, border-left 0.3s;
+}
+
+.sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--color-sidebar-active);
+    color: var(--color-main-light);
+}
+
+.sidebar nav a.active {
+    background: rgba(59, 130, 246, 0.15); /* Light active background */
+    border-left-color: var(--color-sidebar-active);
+    color: var(--color-sidebar-active);
 }
 
 /* ======================================
-    Header (Floating Glass Panel - Logo and Nav on Left)
+    2. Main Content Area
+====================================== */
+.main-content {
+    /* Offset the content to make space for the fixed sidebar */
+    margin-left: var(--sidebar-width);
+    flex-grow: 1;
+    padding: 0; /* Padding is added inside the sections */
+}
+
+/* ======================================
+    Header (Top Bar/App Bar)
 ====================================== */
 header {
-    background: var(--color-glass-surface);
-    border-radius: var(--border-radius-data-tile);
-    box-shadow: var(--shadow-depth), var(--shadow-inner-light);
-    border: 1px solid var(--color-glass-border);
-    backdrop-filter: blur(8px) saturate(150%);
-    -webkit-backdrop-filter: blur(8px) saturate(150%);
-
-    position: sticky;
-    top: 25px; 
-    width: 90%;
-    margin: 25px auto 0;
-    padding: 16px 40px;
-    
+    background: var(--color-main-surface);
+    color: var(--color-text-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
     display: flex;
+    justify-content: flex-end; /* Push utility items to the right */
     align-items: center;
-    justify-content: flex-start; 
-    gap: 50px; 
-    z-index: 100;
-    
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-header .logo {
-    font-size: 1.8rem;
-    color: var(--color-text-header);
-    text-shadow: 0 0 10px var(--color-system-secondary); /* Cyan glow on logo */
-}
-
-header nav a {
-    color: var(--color-text-detail);
-    margin-left: 20px; 
-    font-weight: 500;
-}
-
-header nav a:hover {
-    color: var(--color-system-focus);
-    text-shadow: 0 0 10px var(--color-system-focus);
-}
-
-/* ======================================
-    Hero Section 
-====================================== */
-.hero {
-    min-height: 60vh; 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 0 10%;
-    text-align: left;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-size: 3.8rem;
-    max-width: 650px;
-    margin-bottom: 20px;
-    /* Neon effect for the main headline */
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
-}
-
-/* ======================================
-    Buttons (Glowing Edge)
-====================================== */
-.btn {
-    padding: 15px 35px;
-    border-radius: 50px;
-    font-weight: 700;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    display: inline-block;
-}
-
-.btn-primary {
-    background: var(--color-system-focus);
-    color: var(--color-system-base);
-    box-shadow: 0 0 15px rgba(253, 216, 53, 0.6);
-}
-
-.btn-primary:hover {
-    box-shadow: var(--shadow-glow); /* Uses the powerful glow effect */
-    transform: scale(1.05);
-}
-
-.btn-secondary {
-    background: var(--color-system-primary);
-    color: white;
-    margin-left: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.btn-secondary:hover {
-    background: #4a298f;
-    transform: translateY(-2px);
-}
-
-/* ======================================
-    Service Cards (Deep Modules)
-====================================== */
-.service-section {
-    padding: 100px 10%;
-    margin-top: -120px; 
-    max-width: 1400px;
-    margin: -120px auto 0;
+    position: sticky;
+    top: 0;
     z-index: 50;
-    position: relative;
-}
-
-.service-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.service-card {
-    /* Manual application of mixin values */
-    background: var(--color-glass-surface);
-    border-radius: var(--border-radius-data-tile);
-    box-shadow: var(--shadow-depth), var(--shadow-inner-light);
-    border: 1px solid var(--color-glass-border);
-    backdrop-filter: blur(8px) saturate(150%);
-    -webkit-backdrop-filter: blur(8px) saturate(150%);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-    padding: 50px 30px; 
-    text-align: center;
-    flex: 1;
-    
-    /* Slightly less organic shape */
-    border-radius: 30% 70% 50% 50% / 50% 50% 50% 50%; 
-    min-height: 250px;
-}
-
-.service-card:hover {
-    /* Intense glow on hover from the secondary color */
-    box-shadow: var(--shadow-depth), 0 0 30px rgba(0, 188, 212, 0.8); 
-    transform: translateY(-15px) scale(1.02); 
-}
-
-.card-icon {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-    /* Cyan glow on icons */
-    text-shadow: 0 0 15px var(--color-system-secondary);
-    color: var(--color-system-secondary); 
-}
-
-.service-card h3 {
-    font-size: 1.2rem;
     font-weight: 500;
-    letter-spacing: 1px;
-    color: var(--color-text-header);
 }
 
 /* ======================================
-    Footer (Deep Base)
+    Sections (The Dashboard Grid)
+====================================== */
+section {
+    padding: var(--spacing-lg);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+}
+
+.dashboard-grid {
+    display: grid;
+    /* Define the grid structure for dashboard widgets/cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: minmax(150px, auto); /* Flexible row height */
+    gap: var(--spacing-lg);
+}
+
+/* ======================================
+    Dashboard Modules (Cards/Widgets)
+====================================== */
+.module-card {
+    background: var(--color-main-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-module);
+    box-shadow: var(--shadow-module-light);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Contains any internal content */
+}
+
+.module-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.module-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-sidebar-active);
+}
+
+.module-card.compliance {
+    /* Example of sizing a specific card to take up two columns */
+    grid-column: span 2; 
+}
+
+/* Example: Small module for a single metric */
+.module-card.metric {
+    text-align: center;
+}
+
+.module-card.metric .value {
+    font-size: 3rem;
+    color: var(--color-text-primary);
+    font-weight: 800;
+}
+
+/* ======================================
+    Footer 
 ====================================== */
 footer {
-    background: var(--color-system-base);
-    color: var(--color-text-detail);
+    padding: var(--spacing-md) var(--spacing-lg);
     text-align: center;
-    padding: 30px 20px;
-    font-size: 0.9rem;
-    margin-top: 80px;
-    border-top: 2px solid var(--color-system-primary); /* Final dividing line */
+    border-top: 1px solid #e2e8f0;
+    margin-left: var(--sidebar-width); /* Push footer to the right */
+    background: var(--color-main-surface);
+    font-size: 0.8rem;
 }
 
 /* ======================================
     Responsive Adjustments
 ====================================== */
-@media (max-width: 992px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
+@media (max-width: 1024px) {
+    .sidebar {
+        position: relative; /* Sidebar is no longer fixed on smaller screens */
         width: 100%;
-        top: 0;
-        border-radius: 0;
+        height: auto;
+        padding-bottom: 0;
     }
-    header nav {
+    .main-content {
+        margin-left: 0; /* Main content takes up full width */
+    }
+    .sidebar nav a {
+        padding: 10px 20px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        display: inline-block; /* Horizontal links on mobile */
+    }
+    .sidebar nav {
         text-align: center;
+        overflow-x: auto;
+        white-space: nowrap;
     }
-    .hero h1 {
-        font-size: 2.5rem;
+    .dashboard-grid {
+        grid-template-columns: 1fr; /* Single column layout for modules */
     }
-    .service-grid {
-        flex-direction: column;
-        gap: 25px;
-    }
-    .service-section {
-        margin-top: 0;
-        padding: 50px 5%;
-    }
-    .service-card {
-        border-radius: var(--border-radius-data-tile); 
+    .module-card.compliance {
+        grid-column: span 1; 
     }
 }
