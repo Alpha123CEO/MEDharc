@@ -1,28 +1,30 @@
 /* ======================================
-    Global Styles & Variables (Healthcare Compliance Focus)
+    Global Styles & Variables (Auditor's Precision)
 ====================================== */
 :root {
-    /* Color Palette: Trustworthy and Professional */
-    --color-primary: #0b509d; /* Deep Corporate/Medical Blue */
-    --color-secondary: #007a82; /* Teal/Deep Green for health and growth */
-    --color-accent: #f4b400; /* Subtle Gold/Yellow for alerts/highlights */
-    --color-background: #ffffff; /* Pure White background */
-    --color-light-background: #f8f9fa; /* Off-White for subtle separation */
-    --color-text-dark: #3c4043; /* Darker text for high contrast */
-    --color-text-body: #5f6368; /* Grey for body text */
-    --color-border: #e8eaed; /* Lighter, subtle border */
+    /* Color Palette: High-Contrast, Technical */
+    --color-base: #1f242d; /* Dark Charcoal Background */
+    --color-surface: #2c3440; /* Slightly Lighter Surface for Components */
+    --color-primary-text: #e0e0e0; /* Light Grey for main body text */
+    --color-headline-text: #ffffff; /* Pure White for headlines */
+    
+    --color-accent-action: #00f5d4; /* Electric Cyan/Lime Green for CTAs/Highlights */
+    --color-accent-secondary: #ff7f11; /* Warm Orange for secondary features */
+
+    --color-border: #444f5c; /* Subtly darker border */
 
     /* Typography */
-    --font-family-sans: 'Roboto', 'Inter', sans-serif;
+    --font-family-sans: 'Space Mono', monospace, 'Inter', sans-serif; /* Monospace/Technical feel */
+    --font-family-headline: 'Montserrat', sans-serif;
+    --font-weight-light: 300;
     --font-weight-regular: 400;
-    --font-weight-medium: 500;
     --font-weight-bold: 700;
 
     /* Spacing & Components */
-    --spacing-default: 8px;
-    --border-radius-default: 4px; /* Slightly less rounded corners for seriousness */
-    --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.08); 
-    --shadow-elevated: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --spacing-lg: 120px;
+    --spacing-md: 60px;
+    --border-radius-sharp: 0px; /* Sharp corners dominate */
+    --shadow-technical: 0 0 10px rgba(0, 245, 212, 0.4); /* Neon shadow for accent */
 }
 
 * {
@@ -33,235 +35,245 @@
 
 body {
     font-family: var(--font-family-sans);
-    background: var(--color-light-background);
-    color: var(--color-text-body);
-    line-height: 1.6; /* Slightly increased line height for long-form reading */
+    background: var(--color-base);
+    color: var(--color-primary-text);
+    line-height: 1.7;
 }
 
 h1, h2, h3 {
-    color: var(--color-text-dark);
-    font-weight: var(--font-weight-medium); /* All headings are medium weight for modern clarity */
+    font-family: var(--font-family-headline);
+    color: var(--color-headline-text);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.05em; /* Subtle spacing for impact */
+}
+
+a {
+    color: var(--color-accent-action);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-secondary);
 }
 
 /* ======================================
-    Header (Stays White for Clean Look)
+    Header (High-Contrast, Technical Strip)
 ====================================== */
 header {
-    background: var(--color-background);
-    border-bottom: 2px solid var(--color-primary); /* Thick line of brand color */
-    padding: 14px 32px;
+    background: var(--color-surface);
+    border-bottom: 3px solid var(--color-accent-secondary);
+    padding: 18px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: var(--shadow-subtle);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 header .logo {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    letter-spacing: -0.5px;
+    color: var(--color-accent-action);
+    text-shadow: 0 0 3px var(--color-accent-action);
 }
 
 header nav a {
-    color: var(--color-text-dark);
-    margin-left: 28px;
-    font-size: 0.95rem;
-    font-weight: var(--font-weight-medium);
+    color: var(--color-primary-text);
+    margin-left: 30px;
+    font-size: 1rem;
+    font-weight: var(--font-weight-regular);
 }
 
 header nav a:hover {
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
-    padding-bottom: 5px; /* Visual cue for active/hover */
+    color: var(--color-accent-action);
+    text-shadow: 0 0 5px var(--color-accent-action);
 }
 
 /* ======================================
-    Hero Section (Focus on Trust)
+    Hero Section (Data Focus)
 ====================================== */
 .hero {
-    min-height: 400px; /* Shorter, more focused hero */
-    background: linear-gradient(rgba(11, 80, 157, 0.9), rgba(0, 122, 130, 0.7)),
-                url('
-') no-repeat center center/cover;
+    min-height: 60vh; 
+    background: var(--color-base); 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
-    padding: 50px;
+    padding: 50px 40px;
+    
+    /* Unique Background Texture (simulated data grid) */
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px),
+                      radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    font-weight: var(--font-weight-bold);
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 4rem;
+    margin-bottom: 10px;
+    line-height: 1;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin: 10px 0 25px;
-    max-width: 800px;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.4rem;
+    margin: 15px 0 30px;
+    max-width: 900px;
+    color: var(--color-accent-secondary);
 }
 
 /* ======================================
-    Buttons
+    Buttons (High-Vis)
 ====================================== */
 .btn {
-    padding: 10px 24px;
-    background: var(--color-secondary); /* Green button for clear action */
-    color: white;
-    border-radius: var(--border-radius-default);
+    padding: 14px 30px;
+    background: var(--color-accent-action);
+    color: var(--color-base); /* Dark text on bright background */
+    border-radius: var(--border-radius-sharp);
     font-weight: var(--font-weight-bold);
-    box-shadow: var(--shadow-subtle);
-    transition: all 0.2s ease;
+    box-shadow: var(--shadow-technical);
+    transition: all 0.3s ease;
+    border: none;
+    text-transform: uppercase;
 }
 
 .btn:hover {
-    background: #006064; /* Darker secondary color on hover */
-    box-shadow: var(--shadow-elevated);
-    transform: translateY(-1px);
+    background: #00cccc; 
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.8);
+    transform: translateY(-2px);
 }
 
-.btn-primary {
-    background: var(--color-primary);
+/* Secondary Button for less urgent actions */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-accent-action);
+    border: 2px solid var(--color-accent-action);
+    box-shadow: none;
 }
 
-.btn-primary:hover {
-    background: #09407e;
+.btn-secondary:hover {
+    background: rgba(0, 245, 212, 0.1);
+    transform: none;
 }
 
 /* ======================================
-    Sections (Dedicated Service Cards)
+    Sections (Asymmetric Layouts)
 ====================================== */
 section {
-    padding: 60px 40px;
-    background: var(--color-background); 
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Soft, contained section shadow */
+    padding: var(--spacing-lg) 40px; 
+    background: var(--color-surface);
+    margin-bottom: 2px; /* Thin line separation */
+    border-top: 2px solid var(--color-border);
 }
 
 section h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--color-secondary);
-    margin: 10px auto 0;
-}
-
-/* Specializing the project grid for 'Services' */
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 40px auto 0;
-}
-
-.service-card {
-    background: var(--color-light-background);
-    padding: 30px;
-    border-radius: var(--border-radius-default);
-    border-left: 5px solid var(--color-primary); /* Brand highlight */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    text-align: left;
-}
-
-.service-card:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
-    border-left-color: var(--color-secondary);
-}
-
-.service-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--color-primary);
-}
-
-/* Use a placeholder for the icon */
-.service-card .icon-placeholder {
+    text-align: left; /* Unique: Headings don't have to be centered */
     font-size: 2.5rem;
-    color: var(--color-secondary);
-    margin-bottom: 15px;
-    display: block;
+    margin-bottom: 50px;
+    border-left: 5px solid var(--color-accent-secondary);
+    padding-left: 20px;
 }
 
-/* ======================================
-    Footer (Strong and Clear)
-====================================== */
-footer {
-    background: var(--color-text-dark); /* Very dark gray/black */
-    color: #bdbdbd;
-    text-align: center;
-    padding: 30px 20px;
-    font-size: 0.85rem;
-}
-
-/* ======================================
-    Visual Imagery for Sections (Example Structure)
-====================================== */
-/* This section can be used for a dedicated service like 'Fraud Investigation' */
-.fraud-investigation {
+/* Feature/Service Layout with Image on Side */
+.feature-block {
     display: flex;
+    gap: 60px;
     align-items: center;
-    gap: 50px;
-    padding: 80px 40px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
-.fraud-investigation-text {
+.feature-text {
     flex: 1;
 }
 
-.fraud-investigation-image {
+.feature-image {
     flex: 1;
-    text-align: right;
+    min-width: 400px;
 }
 
-.fraud-investigation-image img {
+.feature-image img {
     width: 100%;
-    max-width: 450px;
     height: auto;
-    border-radius: var(--border-radius-default);
-    box-shadow: var(--shadow-elevated);
+    border-radius: 4px;
+    outline: 3px solid var(--color-accent-action); /* Unique border highlight */
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.3);
 }
 
-/* Recommended image tag for a section detail: */
-/* 
-
-[Image of a magnifying glass over a chart of healthcare billing data]
- */
-
+/* Alternating Image Side (For unique visual flow) */
+.feature-block:nth-child(even) {
+    flex-direction: row-reverse;
+    background: var(--color-base); /* Alternating background */
+}
 
 /* ======================================
-    Responsive
+    Service Cards (Sharp and Elevated)
+====================================== */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: var(--color-base);
+    padding: 30px;
+    border-radius: var(--border-radius-sharp);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%); /* Cut corner effect */
+}
+
+.service-card:hover {
+    border-color: var(--color-accent-action);
+    box-shadow: var(--shadow-technical);
+    transform: scale(1.02);
+}
+
+.service-card h3 {
+    color: var(--color-accent-action);
+    margin-bottom: 15px;
+    font-weight: var(--font-weight-light);
+}
+
+/* ======================================
+    Footer (Data Console Look)
+====================================== */
+footer {
+    background: var(--color-surface);
+    color: var(--color-primary-text);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    border-top: 5px solid var(--color-accent-secondary);
+}
+
+/* ======================================
+    Responsive adjustments
 ====================================== */
 @media (max-width: 900px) {
-    .fraud-investigation {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .feature-block {
         flex-direction: column;
         text-align: center;
     }
-    .fraud-investigation-image {
-        order: -1; /* Image appears above text on mobile */
+    .feature-image {
+        order: -1; 
     }
-    .fraud-investigation-image img {
-        margin-bottom: 20px;
+    .feature-block:nth-child(even) {
+        flex-direction: column; /* Resetting the reverse for mobile clarity */
+    }
+    section h2 {
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
+        border-bottom: 3px solid var(--color-accent-secondary);
+        padding-bottom: 10px;
     }
 }
