@@ -1,32 +1,41 @@
-/* ======================================
-    Global Styles & Variables (Consulting Authority)
-====================================== */
+/* ==========================================================
+    Consulting Authority Style - Production Ready CSS
+    Theme: Professional, Trustworthy, Data-Focused
+    Deployment Date: Dec 2025
+========================================================== */
+
+/* --------------------------------------
+    Global Variables (The Foundation)
+-------------------------------------- */
 :root {
     /* Color Palette: Trust, Authority, Precision */
-    --color-authority-primary: #003366;    /* Deep Navy Blue */
-    --color-authority-secondary: #0099a1;  /* Rich Teal/Cyan for Precision */
-    --color-authority-accent: #f5a623;     /* Subtle Gold/Amber for Alerts */
+    --color-authority-primary: #003366;    /* Deep Navy Blue (Primary Brand) */
+    --color-authority-secondary: #0099a1;  /* Rich Teal/Cyan (Accent/Action) */
+    --color-authority-accent: #f5a623;     /* Subtle Gold/Amber (Alerts/Highlights) */
     
     --color-background-white: #ffffff;
     --color-background-light: #f7f9fb;     /* Very Light Off-White Base */
-    --color-background-muted: #e6e8eb;     /* Light Grey for subtle dividers */
+    --color-background-muted: #e6e8eb;     /* Light Grey for subtle borders */
 
-    --color-text-dark: #212529;
-    --color-text-body: #495057;
+    --color-text-dark: #212529;            /* Headings/Strong Contrast */
+    --color-text-body: #495057;            /* Paragraphs/Readability */
 
     /* Typography */
     --font-family-headline: 'Roboto', 'Arial', sans-serif;
     --font-family-body: 'Open Sans', 'Helvetica Neue', sans-serif; 
 
     /* Spacing & Components */
-    --spacing-xl: 100px;
-    --spacing-lg: 60px;
+    --spacing-xl: 100px; /* Large vertical padding */
+    --spacing-lg: 60px;  /* Section padding */
     --max-content-width: 1280px;
     --border-radius-minimal: 4px;
     /* Precise, low-spread shadow for "floating paper" look */
     --shadow-precise: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
+/* --------------------------------------
+    Base Reset and Typography
+-------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -37,7 +46,8 @@ body {
     font-family: var(--font-family-body);
     background: var(--color-background-light);
     color: var(--color-text-body);
-    line-height: 1.6;
+    line-height: 1.6; /* Excellent readability */
+    min-height: 100vh;
 }
 
 h1, h2, h3 {
@@ -51,23 +61,25 @@ a {
     text-decoration: none;
     transition: color 0.2s ease;
 }
+a:hover {
+    color: var(--color-authority-secondary);
+}
 
-/* ======================================
+/* --------------------------------------
     Header (Stark, Structured, Fixed)
-====================================== */
+-------------------------------------- */
 header {
     background: var(--color-background-white);
     border-bottom: 1px solid var(--color-background-muted);
     padding: 15px 40px;
     display: flex;
     align-items: center;
-    /* Aligns logo and nav to the left, tightly clustered */
-    justify-content: flex-start;
+    justify-content: flex-start; /* Logo and Nav clustered left */
     gap: 40px;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very subtle top-bar shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 header .logo {
@@ -82,21 +94,22 @@ header nav a {
     font-weight: 600;
     font-size: 1rem;
     text-transform: uppercase;
+    transition: all 0.2s ease;
 }
 
 header nav a:hover {
     color: var(--color-authority-secondary);
     border-bottom: 2px solid var(--color-authority-secondary);
-    padding-bottom: 12px; /* Visual cue for high-end navigation */
+    padding-bottom: 12px;
 }
 
-/* ======================================
+/* --------------------------------------
     Hero Section (Clean & Data-Focused)
-====================================== */
+-------------------------------------- */
 .hero {
     min-height: 50vh;
     padding: var(--spacing-xl) 0;
-    background: var(--color-authority-primary); /* Use primary color for depth */
+    background: var(--color-authority-primary);
     color: white;
     text-align: center;
 }
@@ -121,9 +134,9 @@ header nav a:hover {
     margin-bottom: 30px;
 }
 
-/* ======================================
+/* --------------------------------------
     Buttons (Corporate & Solid)
-====================================== */
+-------------------------------------- */
 .btn {
     padding: 12px 28px;
     background: var(--color-authority-secondary);
@@ -131,14 +144,15 @@ header nav a:hover {
     border-radius: var(--border-radius-minimal);
     font-weight: 700;
     text-transform: uppercase;
-    transition: background 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background: #007a82;
+    background: #007a82; /* Slightly darker secondary */
     transform: translateY(-1px);
 }
 
@@ -151,11 +165,13 @@ header nav a:hover {
 .btn-secondary:hover {
     background: var(--color-background-light);
     transform: none;
+    color: var(--color-authority-secondary);
+    border-color: var(--color-authority-secondary);
 }
 
-/* ======================================
+/* --------------------------------------
     Sections (Standardized Content Blocks)
-====================================== */
+-------------------------------------- */
 section {
     padding: var(--spacing-lg) 0;
 }
@@ -180,81 +196,13 @@ section h2::after {
     height: 3px;
     background: var(--color-authority-secondary);
     margin: 10px auto 0;
+    border-radius: 1.5px; /* Clean look on the underline */
 }
 
 
-/* ======================================
+/* --------------------------------------
     Service Cards (Elevated Data Modules)
-====================================== */
+-------------------------------------- */
 .service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.service-card {
-    background: var(--color-background-white);
-    padding: 30px;
-    border-radius: var(--border-radius-minimal);
-    box-shadow: var(--shadow-precise);
-    border-top: 5px solid var(--color-authority-primary);
-    transition: border-top-color 0.3s, box-shadow 0.3s, transform 0.3s;
-}
-
-.service-card:hover {
-    border-top-color: var(--color-authority-secondary);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* More pronounced lift on hover */
-    transform: translateY(-3px);
-}
-
-.service-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--color-authority-primary);
-    text-transform: uppercase;
-}
-
-.card-icon {
-    font-size: 2.5rem;
-    color: var(--color-authority-secondary);
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* ======================================
-    Footer (Strong and Trustworthy)
-====================================== */
-footer {
-    background: var(--color-authority-primary);
-    color: white;
-    text-align: center;
-    padding: 30px 40px;
-    font-size: 0.9rem;
-    margin-top: 40px;
-}
-
-/* ======================================
-    Responsive Adjustments
-====================================== */
-@media (max-width: 900px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    header nav {
-        text-align: center;
-    }
-    header nav a {
-        margin: 0 10px;
-        padding-bottom: 5px;
-        display: inline-block;
-    }
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    .service-grid {
-        grid-template-columns: 1fr;
-    }
-}
