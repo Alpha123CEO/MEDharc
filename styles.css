@@ -57,29 +57,38 @@ a:hover {
     Header (Clean and minimal)
 ====================================== */
 header {
-    background: var(--color-background); /* White header for a clean look */
+    background: var(--color-background);
     border-bottom: 1px solid var(--color-border);
     padding: 16px 32px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* 🔑 KEY FIX 1: Align all content to the START (left) */
+    justify-content: flex-start; 
+    /* Add space between the logo and the navigation links */
+    gap: 40px; 
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very light shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 header .logo {
     font-size: 1.8rem;
     font-weight: var(--font-weight-medium);
-    color: var(--color-primary); /* Logo in primary color */
+    color: var(--color-primary);
 }
 
 header nav a {
-    color: var(--color-secondary); /* Dark text for links */
-    margin-left: 24px;
+    color: var(--color-secondary);
+    /* Remove margin-left here since gap handles spacing from logo */
+    margin-left: 16px; 
     font-size: 1rem;
     font-weight: var(--font-weight-medium);
+}
+
+header nav a:first-child {
+    /* Reduce margin on the first link to keep it tight against the logo */
+    margin-left: 0; 
 }
 
 header nav a:hover {
@@ -90,7 +99,7 @@ header nav a:hover {
     Hero Section (Focal Point)
 ====================================== */
 .hero {
-    height: 70vh; /* Slightly shorter than before */
+    height: 70vh;
     background: var(--color-background); 
     display: flex;
     flex-direction: column;
@@ -133,8 +142,8 @@ header nav a:hover {
 }
 
 .btn:hover {
-    background: #1565c0; /* Slightly darker shade */
-    box-shadow: 0 2px 8px rgba(60, 64, 67, 0.3); /* More elevated shadow */
+    background: #1565c0;
+    box-shadow: 0 2px 8px rgba(60, 64, 67, 0.3);
     transform: translateY(-1px);
 }
 
@@ -155,14 +164,14 @@ header nav a:hover {
     Sections
 ====================================== */
 section {
-    padding: 80px 40px; /* Increased padding for more whitespace */
-    background: var(--color-background); /* White background for main content */
-    margin-bottom: 24px; /* Separation from the next section */
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); /* Optional: Use box-shadow to "lift" sections */
+    padding: 80px 40px;
+    background: var(--color-background);
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 section:nth-child(even) {
-    background: var(--color-light-background); /* Subtle grey for alternating sections */
+    background: var(--color-light-background);
     box-shadow: none;
 }
 
@@ -179,7 +188,7 @@ section h2 {
 ====================================== */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
     max-width: 1200px;
@@ -190,7 +199,7 @@ section h2 {
 .project-card {
     background: var(--color-background);
     padding: 30px;
-    border-radius: 12px; /* More rounded corners */
+    border-radius: 12px;
     box-shadow: var(--shadow-subtle);
     border: 1px solid var(--color-border);
     transition: all 0.3s ease;
@@ -235,8 +244,8 @@ section h2 {
     Footer (Simple & Dark)
 ====================================== */
 footer {
-    background: var(--color-secondary); /* Dark background */
-    color: var(--color-border); /* Light grey text */
+    background: var(--color-secondary);
+    color: var(--color-border);
     text-align: center;
     padding: 24px;
     font-size: 0.9rem;
@@ -247,19 +256,32 @@ footer {
     Responsive
 ====================================== */
 @media (max-width: 768px) {
+    /* 🔑 KEY FIX 2: Reset header to be single-row/inline flow on mobile */
     header {
-        flex-direction: column;
-        text-align: center;
-        padding: 12px 20px;
+        /* Revert to single-row layout */
+        flex-direction: row; 
+        /* Maintain alignment */
+        justify-content: flex-start;
+        align-items: center;
+        /* Reduce overall padding on mobile */
+        padding: 12px 20px; 
+        gap: 20px; /* Tighter gap on mobile */
     }
 
     header nav {
-        margin-top: 10px;
+        /* Allow nav items to flow horizontally and wrap if necessary */
+        display: flex;
+        flex-wrap: wrap; 
+        /* Reset margin added by previous column layout */
+        margin-top: 0; 
+        margin-left: 0;
     }
 
     header nav a {
+        /* Maintain single-row display for links */
         display: inline-block;
-        margin: 5px 10px;
+        /* Reduce spacing between links on small screens */
+        margin: 0 8px; 
     }
 
     .hero h1 {
