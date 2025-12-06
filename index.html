@@ -3,24 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Services — MEDHARC, LLC | Audit, Compliance, and Revenue Integrity</title>
-  <meta name="description" content="MEDHARC, LLC offers specialized services: Release of Information, Medical Billing Audits, Compliance Audits, Coding Review, and Strategic Consulting." />
+  <title>MEDHARC, LLC — Precision in every step, trust in every result</title>
+  <meta name="description" content="MEDHARC, LLC — Healthcare compliance, ROI, medical billing audits, and consulting services. Request a demo or contact us to improve compliance and recover revenue." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/logo.svg" />
+    <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"MEDHARC, LLC",
+    "url":"#",
+    "logo":"assets/logo.svg",
+    "sameAs":[]
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="MEDHARC homepage">
-        <img src="assets/logo.svg" alt="MEDHARC logo" class="logo" />
+        <img src="assets/logo.svg" alt="MEDHARC, LLC logo" class="logo" />
         <span class="brand-text">MEDHARC, LLC</span>
       </a>
-      <nav class="nav" aria-label="Primary">
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Toggle navigation</span>
+        ☰
+      </button>
+
+      <nav id="primary-nav" class="nav" aria-label="Primary">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="services.html" aria-current="page">Services</a></li>
-          <li><a href="careers.html">Careers</a></li>
+          <li><a href="services.html">Services</a></li>
+            <li><a href="careers.html">Careers</a></li>
           <li><a href="contact.html" class="cta">Request a Demo</a></li>
         </ul>
       </nav>
@@ -28,83 +44,70 @@
   </header>
 
   <main>
-    
-        <section class="section page-header">
-      <div class="container">
-        <h1>Our Specialized Services</h1>
-        <p class="lead">We offer targeted services for healthcare organizations, payers, and legal teams that require **reliable compliance, revenue integrity, and expert audit capabilities**.</p>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <h1>Precision in every step, trust in every result</h1>
+        <p class="lead">MEDHARC delivers HIPAA-aware ROI services, medical billing audits, compliance reviews, and expert consulting to hospitals, clinics, law firms, and payers.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="contact.html">Request a Demo</a>
+          <a class="btn outline" href="services.html">Our Services</a>
+        </div>
       </div>
     </section>
-    
-    <section class="section service-modules">
-        <div class="container features-grid">
 
-            <div class="service-module card">
-                <h2>Release of Information (ROI)</h2>
-                <p>We provide **secure, accurate, and HIPAA-compliant** ROI services for hospitals, clinics, and legal teams. Our streamlined workflows ensure timely processing, proper authorization validation, and strict confidentiality for all PHI requests.</p>
-            </div>
+    <section class="section intro">
+      <div class="container grid features-grid">
+        <article class="card">
+          <h2>Release of Information (ROI)</h2>
+          <p>Secure, compliant ROI services with full audit trails. We streamline disclosures while protecting PHI and reducing legal exposures.</p>
+        </article>
 
-            <div class="service-module card">
-                <h2>Medical Billing & Revenue Audits</h2>
-                <p>Full-scope billing audits designed to identify coding errors, missed charges, and **revenue leakage**. Deliverables include a findings report, estimated recoverable amounts, and prioritized corrective action plans.</p>
-            </div>
+        <article class="card">
+          <h2>Medical Billing Audits</h2>
+          <p>Comprehensive audits to identify underpayments, coding inconsistencies, and recoverable revenue with clear findings and remediation plans.</p>
+        </article>
 
-            <div class="service-module card">
-                <h2>Compliance & Regulatory Audits</h2>
-                <p>**Regulatory readiness assessments** and gap analyses focused on HIPAA, state-specific privacy laws, and payer contract compliance. We review internal controls and provide remediation roadmaps prioritized by risk.</p>
-            </div>
-            
-            <div class="service-module card">
-                <h2>Medical Coding Review</h2>
-                <p>Certified experts review **ICD-10, CPT, HCPCS, and DRG** assignments to ensure accuracy, optimize reimbursement, and reduce financial or legal risks associated with incorrect coding and documentation practices.</p>
-            </div>
+        <article class="card">
+          <h2>Compliance & Regulatory Audits</h2>
+          <p>Assessments against HIPAA and industry regulations, risk analysis, policy recommendations, and corrective action roadmaps.</p>
+        </article>
+      </div>
+    </section>
 
-        </div>
-    </section>
+        <section class="section about-cta">
+      <div class="container split">
+        
+                <div>
+          <h2>Why MEDHARC?</h2>
+          <p>We combine health informatics knowledge, HIPAA expertise, and practical auditing experience to deliver actionable results and measurable ROI.</p>
+          <ul>
+            <li>Healthcare-focused expertise</li>
+            <li>Secure and documented workflows</li>
+            <li>Actionable audit reports and remediation</li>
+          </ul>
+          <a class="btn primary" href="contact.html">Get a Consultation</a>
+        </div>
+        
+                <div class="quick-contact card">
+          <h3>Contact</h3>
+          <p><strong>Email:</strong> info@medharc.example</p>
+          <p><strong>Phone:</strong> (555) 555-0123</p>
+          <a class="btn outline" href="contact.html">Request a Demo</a>
+        </div>
+      </div>
+    </section>
 
-    <section class="section advisory-support">
-        <div class="container split">
-            
-            <div class="advisory-card">
-                <h2>Consulting & Advisory Services</h2>
-                <p>We provide **tailored strategic support** for facilities needing expert guidance on operational efficiency, risk mitigation, and program implementation. We can act as an interim compliance team or provide long-term advisory support.</p>
-                <ul>
-                    <li>Operational workflow improvement</li>
-                    <li>ROI process optimization</li>
-                    <li>Fraud, Waste & Abuse (FWA) review</li>
-                    <li>EHR process and documentation alignment</li>
-                </ul>
-            </div>
-
-            <div class="advisory-card">
-                <h2>Billing & Legal Case Support</h2>
-                <p>Beyond auditing, we offer full **end-to-end billing solutions** including denial management and payment posting. We also support attorneys and insurance companies with independent case reviews and expert chart audits.</p>
-                <ul>
-                    <li>Claim submission and denial management</li>
-                    <li>Payment posting and insurance follow-up</li>
-                    <li>Independent chart audits for legal teams</li>
-                    <li>Documentation summaries for case review</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section packages-cta">
-        <div class="container" style="text-align: center;">
-            <h2>Service Packages & Next Steps</h2>
-            
-            <ul class="package-list">
-                <li>**Baseline Audit** — one-time comprehensive assessment with a prioritized remediation report.</li>
-                <li>**Recovery Audit** — focused billing review with aggressive recovery assistance for identified leakage.</li>
-                <li>**Managed Compliance** — ongoing monitoring, scheduled audits, quarterly training, and dashboarding.</li>
-            </ul>
-            
-            <p class="muted" style="max-width: 600px; margin: 30px auto;">Custom pricing is available based on volume, complexity, and scope. We guarantee a proposal tailored specifically to your organizational needs.</p>
-            
-            <a class="btn primary" href="contact.html">Request a Tailored Proposal</a>
-        </div>
-    </section>
-
+        <section class="section case-study">
+      <div class="container">
+        <h2>Sample Process</h2>
+        <ol>
+          <li>Initial scoping & secure data intake</li>
+          <li>Audit & analysis (coding, billing, disclosure workflows)</li>
+          <li>Findings, recovery estimation, and remediation plan</li>
+          <li>Ongoing monitoring or handoff to client teams</li>
+        </ol>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -115,6 +118,7 @@
       </div>
       <div class="footer-right">
         <p class="muted">© <span id="year"></span> MEDHARC, LLC</p>
+        <p class="muted small">Designed for healthcare compliance and audit services</p>
       </div>
     </div>
   </footer>
