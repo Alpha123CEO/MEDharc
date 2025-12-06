@@ -1,64 +1,186 @@
-/* ===========================
-   Global Styles
-=========================== */
+/* ======================================
+   Global Styles & Variables
+====================================== */
 :root {
-  --primary: #0047ff;
-  --secondary: #111827;
-  --accent: #00d1b2;
-  --bg-light: #f9fafb;
-  --text-dark: #1f2937;
-  --font-main: "Inter", sans-serif;
+    --primary: #0057ff;
+    --secondary: #1f2937;
+    --accent: #00d1b2;
+    --light: #f5f7fa;
+    --dark: #0f172a;
+    --text: #374151;
+    --font: "Inter", sans-serif;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-main);
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-  line-height: 1.6;
+    font-family: var(--font);
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
 }
 
-/* ===========================
+/* ======================================
    Header
-=========================== */
+====================================== */
 header {
-  background: var(--primary);
-  color: white;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    background: var(--primary);
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* ===========================
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+header nav a {
+    color: white;
+    margin-left: 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+header nav a:hover {
+    color: var(--accent);
+}
+
+/* ======================================
+   Hero Section
+====================================== */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                url('https://source.unsplash.com/1600x900/?technology,design') no-repeat center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 15px 0 25px;
+}
+
+/* ======================================
    Buttons
-=========================== */
+====================================== */
 .btn {
-  padding: 12px 24px;
-  border-radius: 6px;
-  background: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s ease;
+    padding: 12px 25px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
 .btn:hover {
-  background: var(--accent);
-  transform: translateY(-2px);
+    background: #00b89c;
+    transform: translateY(-2px);
 }
 
-/* ===========================
-   Responsive Layout
-=========================== */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
+/* ======================================
+   Sections
+====================================== */
+section {
+    padding: 60px 40px;
+}
+
+section h2 {
     text-align: center;
-  }
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--secondary);
+}
+
+/* ======================================
+   Projects Grid
+====================================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-btn {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.project-btn:hover {
+    color: var(--accent);
+}
+
+/* ======================================
+   Contact
+====================================== */
+.contact {
+    text-align: center;
+}
+
+/* ======================================
+   Footer
+====================================== */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* ======================================
+   Responsive
+====================================== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
 }
