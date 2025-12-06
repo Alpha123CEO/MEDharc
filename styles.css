@@ -1,27 +1,26 @@
 /* ======================================
-    Global Styles & Variables (Modular Dashboard)
+    Global Styles & Variables (Editorial Data Flow)
 ====================================== */
 :root {
-    /* Color Palette: High Contrast for Functionality */
-    --color-sidebar-dark: #1e293b;      /* Deep Slate Blue for fixed navigation */
-    --color-sidebar-text: #e2e8f0;      /* Light text for sidebar contrast */
-    --color-sidebar-active: #3b82f6;    /* Bright Blue for active/focus states */
+    /* Color Palette: High Contrast, Editorial */
+    --color-primary-brand: #7952b3;     /* Deep Violet for Authority */
+    --color-secondary-focus: #198754;   /* Dark Green for Compliance/Success */
     
-    --color-main-light: #f1f5f9;        /* Off-white/Light Gray background for content */
-    --color-main-surface: #ffffff;      /* Pure white for dashboard cards/modules */
-    
-    --color-text-primary: #0f172a;      /* Dark text for content contrast */
-    --color-text-secondary: #64748b;    /* Muted text for descriptions */
+    --color-background-light: #f8f9fa;  /* Off-White, paper-like background */
+    --color-background-dark: #212529;   /* Near-Black for contrast blocks */
+    --color-background-accent: #dee2e6; /* Light grey for subtle separation */
+
+    --color-text-dark: #343a40;
+    --color-text-light: #f8f9fa;
 
     /* Typography */
-    --font-family-base: 'Inter', sans-serif;
+    --font-family-headline: 'Georgia', serif; /* Serif for high-end editorial feel */
+    --font-family-body: 'Helvetica Neue', sans-serif; 
 
-    /* Components & Effects */
-    --spacing-lg: 32px;
-    --spacing-md: 16px;
-    --sidebar-width: 250px;
-    --border-radius-module: 8px;
-    --shadow-module-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Spacing & Components */
+    --padding-section: 120px 0; /* Large vertical padding */
+    --max-content-width: 1100px;
+    --border-radius-sharp: 0;
 }
 
 * {
@@ -31,201 +30,223 @@
 }
 
 body {
-    font-family: var(--font-family-base);
-    background: var(--color-main-light);
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    min-height: 100vh;
-    display: flex; /* Enable Flexbox for the Sidebar/Content split */
+    font-family: var(--font-family-body);
+    background: var(--color-background-light);
+    color: var(--color-text-dark);
+    line-height: 1.6;
 }
 
 h1, h2, h3 {
-    color: var(--color-text-primary);
-    font-weight: 700;
+    font-family: var(--font-family-headline);
+    color: var(--color-text-dark);
 }
 
 a {
-    color: var(--color-sidebar-active);
+    color: var(--color-primary-brand);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
 }
 
 /* ======================================
-    1. Sidebar (Fixed Vertical Navigation)
-====================================== */
-.sidebar {
-    width: var(--sidebar-width);
-    background: var(--color-sidebar-dark);
-    color: var(--color-sidebar-text);
-    padding: var(--spacing-lg) 0;
-    position: fixed; /* Fixed position is crucial for the dashboard feel */
-    height: 100%;
-    overflow-y: auto;
-    z-index: 100;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.sidebar .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    padding: 0 var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
-    color: white;
-}
-
-.sidebar nav {
-    padding: 0;
-}
-
-.sidebar nav a {
-    display: block;
-    color: var(--color-sidebar-text);
-    padding: 12px var(--spacing-lg);
-    font-weight: 500;
-    border-left: 4px solid transparent;
-    transition: background 0.3s, border-left 0.3s;
-}
-
-.sidebar nav a:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-left-color: var(--color-sidebar-active);
-    color: var(--color-main-light);
-}
-
-.sidebar nav a.active {
-    background: rgba(59, 130, 246, 0.15); /* Light active background */
-    border-left-color: var(--color-sidebar-active);
-    color: var(--color-sidebar-active);
-}
-
-/* ======================================
-    2. Main Content Area
-====================================== */
-.main-content {
-    /* Offset the content to make space for the fixed sidebar */
-    margin-left: var(--sidebar-width);
-    flex-grow: 1;
-    padding: 0; /* Padding is added inside the sections */
-}
-
-/* ======================================
-    Header (Top Bar/App Bar)
+    Header (Simple Bar, Scrolling)
 ====================================== */
 header {
-    background: var(--color-main-surface);
-    color: var(--color-text-primary);
-    padding: var(--spacing-md) var(--spacing-lg);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    background: var(--color-background-light);
+    border-bottom: 2px solid var(--color-background-accent);
+    padding: 20px 50px;
     display: flex;
-    justify-content: flex-end; /* Push utility items to the right */
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    justify-content: space-between;
+    
+    /* Removed sticky/fixed position */
+    z-index: 100;
+}
+
+header .logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary-brand);
+    /* Unique: Small title with a large weight */
+    font-family: var(--font-family-headline);
+    letter-spacing: -1px;
+}
+
+header nav a {
+    color: var(--color-text-dark);
+    margin-left: 30px;
     font-weight: 500;
+    font-size: 1.1rem;
+}
+
+header nav a:hover {
+    color: var(--color-secondary-focus);
 }
 
 /* ======================================
-    Sections (The Dashboard Grid)
+    Hero Section (Bold Typography)
+====================================== */
+.hero {
+    min-height: 80vh;
+    padding: 150px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: var(--color-background-light);
+}
+
+.hero-content {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.hero h1 {
+    font-size: 5rem; /* Massive headline */
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 30px;
+    color: var(--color-primary-brand);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    max-width: 700px;
+    margin-bottom: 40px;
+    color: var(--color-text-dark);
+}
+
+/* ======================================
+    Buttons (High Contrast)
+====================================== */
+.btn {
+    padding: 15px 35px;
+    background: var(--color-secondary-focus);
+    color: white;
+    border-radius: var(--border-radius-sharp);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: #146c43;
+    transform: translateY(-2px);
+}
+
+/* ======================================
+    Sections (Asymmetric and Color Blocked)
 ====================================== */
 section {
-    padding: var(--spacing-lg);
+    padding: var(--padding-section);
+    position: relative;
+    overflow: hidden;
 }
 
 section h2 {
-    font-size: 2rem;
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-text-primary);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    line-height: 1.1;
 }
 
-.dashboard-grid {
+/* --- Dark Block Section (e.g., Fraud Investigation) --- */
+.section-dark {
+    background: var(--color-background-dark);
+    color: var(--color-text-light);
+}
+
+.section-dark h2, .section-dark p {
+    color: var(--color-text-light);
+}
+
+/* --- Asymmetric Grid Layout for features --- */
+.asymmetric-grid {
     display: grid;
-    /* Define the grid structure for dashboard widgets/cards */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: minmax(150px, auto); /* Flexible row height */
-    gap: var(--spacing-lg);
+    grid-template-columns: 2fr 1fr; /* Two-thirds for content, one-third for accent/image */
+    gap: 80px;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.asymmetric-grid-reverse {
+    grid-template-columns: 1fr 2fr;
+}
+
+.data-module {
+    /* Main Content Area */
+    padding-right: 20px;
+}
+
+.visual-accent {
+    /* Image/Stat/Accent Area */
+    background: var(--color-background-accent);
+    padding: 30px;
+    text-align: center;
+    font-family: var(--font-family-headline);
+    font-size: 1.8rem;
+    color: var(--color-text-dark);
 }
 
 /* ======================================
-    Dashboard Modules (Cards/Widgets)
+    Service Cards (Modular Blocks)
 ====================================== */
-.module-card {
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: var(--max-content-width);
+    margin: 60px auto 0;
+    padding: 0 50px;
+}
+
+.service-card {
     background: var(--color-main-surface);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-module);
-    box-shadow: var(--shadow-module-light);
-    border: 1px solid #e2e8f0;
-    transition: transform 0.3s, box-shadow 0.3s;
-    overflow: hidden; /* Contains any internal content */
+    padding: 30px;
+    border-top: 5px solid var(--color-primary-brand);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-.module-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.service-card:hover {
+    border-top-color: var(--color-secondary-focus);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.module-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: var(--spacing-md);
-    color: var(--color-sidebar-active);
-}
-
-.module-card.compliance {
-    /* Example of sizing a specific card to take up two columns */
-    grid-column: span 2; 
-}
-
-/* Example: Small module for a single metric */
-.module-card.metric {
-    text-align: center;
-}
-
-.module-card.metric .value {
-    font-size: 3rem;
-    color: var(--color-text-primary);
-    font-weight: 800;
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
 /* ======================================
     Footer 
 ====================================== */
 footer {
-    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-background-dark);
+    color: var(--color-text-light);
     text-align: center;
-    border-top: 1px solid #e2e8f0;
-    margin-left: var(--sidebar-width); /* Push footer to the right */
-    background: var(--color-main-surface);
-    font-size: 0.8rem;
+    padding: 40px 50px;
+    font-size: 0.9rem;
 }
 
 /* ======================================
     Responsive Adjustments
 ====================================== */
-@media (max-width: 1024px) {
-    .sidebar {
-        position: relative; /* Sidebar is no longer fixed on smaller screens */
-        width: 100%;
-        height: auto;
-        padding-bottom: 0;
+@media (max-width: 900px) {
+    .hero h1 {
+        font-size: 3.5rem;
     }
-    .main-content {
-        margin-left: 0; /* Main content takes up full width */
+    section h2 {
+        font-size: 2.5rem;
     }
-    .sidebar nav a {
-        padding: 10px 20px;
-        border-left: none;
-        border-bottom: 2px solid transparent;
-        display: inline-block; /* Horizontal links on mobile */
+    .asymmetric-grid, .asymmetric-grid-reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
-    .sidebar nav {
-        text-align: center;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    .dashboard-grid {
-        grid-template-columns: 1fr; /* Single column layout for modules */
-    }
-    .module-card.compliance {
-        grid-column: span 1; 
+    .visual-accent {
+        order: -1; /* Image/Accent appears above text on mobile */
     }
 }
